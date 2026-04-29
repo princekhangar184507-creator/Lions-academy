@@ -478,14 +478,68 @@ section {
   color: #eab308 !important;
   text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
+/* 🔴 ANIMATED LOGO CIRCLE */
 
-</style> 
+.logo-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* rotating glowing ring */
+.logo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    #ef233c,
+    transparent,
+    #ef233c
+  );
+  animation: spinLogo 4s linear infinite;
+  z-index: 0;
+}
+
+/* inner dark circle */
+.logo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: black;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* logo image */
+.logo {
+  width: 80px;
+  position: relative;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+/* animation */
+@keyframes spinLogo {
+  to { transform: rotate(360deg); }
+}
+
+</style>
 </head>  
 
 <body>  
 
 <header>
-<img src="logo.png" class="logo">
+<div class="logo-wrap">
+  <img src="logo.png" class="logo">
+</div>
 <h1>🏏 Best Cricket Academy in Kota</h1>
 <p>📍 Lions Cricket Academy | Rangbari, Kota, Rajasthan</p>
 </header>  
